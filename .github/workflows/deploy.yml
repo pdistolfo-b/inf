@@ -32,7 +32,7 @@ jobs:
           post-cleanup: 'all'
           shell: micromamba-shell {0}
       - name: Activate cockle
-        run: micromamba activate cockle
+        run: activate cockle
         shell: micromamba-shell {0}
       - name: Build the JupyterLite site
         run: |
