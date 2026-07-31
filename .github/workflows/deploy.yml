@@ -31,6 +31,8 @@ jobs:
           cache-environment: true
           post-cleanup: 'all'
           shell: micromamba-shell {0}
+      - name: Activate cockle
+        run: micromamba activate cockle
       - name: Build the JupyterLite site
         run: |
           cp README.md content
