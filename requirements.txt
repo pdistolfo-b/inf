@@ -4,7 +4,6 @@ jupyterlab~=4.6.0
 notebook~=7.6.0
 
 jupyterlite-xeus>=0.0.0
-jupyterlite-terminal>=0.0.0
 jupyterlite-ai
 
 # Python kernel (optional)
