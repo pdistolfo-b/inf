@@ -14,4 +14,3 @@ dependencies:
       - ipycanvas
       - jupyterlab-server
       - git+https://github.com/ianthomas23/terminal-external-command.git
-  - tree
