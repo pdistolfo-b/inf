@@ -3,6 +3,9 @@ channels:
   - https://prefix.dev/emscripten-forge-4x
   - https://prefix.dev/conda-forge
 dependencies:
+  - jupyter-server
+  - jupyterlite-server
+
   - xeus-python
   - xeus-lua
   - xeus-cpp
@@ -12,3 +15,5 @@ dependencies:
   - ipywidgets
   - pip:
       - ipycanvas
+      - jupyterlite-terminal
+      - git+https://github.com/ianthomas23/terminal-external-command.git
