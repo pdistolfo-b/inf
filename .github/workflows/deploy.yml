@@ -35,7 +35,7 @@ jobs:
       - name: Search tree package
         shell: micromamba-shell {0}
         run: |
-            micromamba search tree
+            micromamba search --platform emscripten-wasm32 tree
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
