@@ -1,5 +1,6 @@
 # Core modules (mandatory)
 jupyterlite-core==0.8.0
+jupyterlite-terminal=1.6.0
 jupyterlab~=4.6.0
 notebook~=7.6.0
 
