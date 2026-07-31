@@ -31,12 +31,6 @@ jobs:
           cache-environment: true
           post-cleanup: 'all'
           shell: micromamba-shell {0}
-      - name: Activate cockle
-        run: activate cockle
-        shell: bash -el {0}
-      - name: Activate terminal-external-command
-        run: activate terminal-external-command
-        shell: bash -el {0}
       - name: Build the JupyterLite site
         run: |
           cp README.md content
