@@ -6,6 +6,7 @@ notebook~=7.6.0
 jupyterlite-xeus>=0.0.0
 jupyterlite-terminal>=0.0.0
 jupyter-server
+terminal-external-command @ git+https://github.com/ianthomas23/terminal-external-command.git
 
 # Python kernel (optional)
 jupyterlite-pyodide-kernel==0.8.0
