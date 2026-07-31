@@ -10,6 +10,7 @@ dependencies:
   - matplotlib
   - pillow
   - ipywidgets
+  - tree
   - pip:
       - ipycanvas
       - jupyterlab-server
