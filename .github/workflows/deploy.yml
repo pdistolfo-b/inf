@@ -34,7 +34,7 @@ jobs:
       - name: Install extension
         shell: micromamba-shell {0}
         run: |
-          pip install jupyter-server
+          pip install jupyter-server jupyterlab-server
           pip install git+https://github.com/ianthomas23/terminal-external-command.git 
       - name: Build the JupyterLite site
         run: |
