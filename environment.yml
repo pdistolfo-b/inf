@@ -1,0 +1,14 @@
+name: xeus-kernels
+channels:
+  - https://prefix.dev/emscripten-forge-4x
+  - https://prefix.dev/conda-forge
+dependencies:
+  - xeus-python
+  - xeus-lua
+  - xeus-nelson
+  - numpy
+  - matplotlib
+  - pillow
+  - ipywidgets
+  - pip:
+      - ipycanvas
