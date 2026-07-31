@@ -39,17 +39,6 @@ jobs:
           find dist -name "cockle-config.json"
           echo "=== terminal files ==="
           find dist -path "*@jupyterlite*"        
-      - name: Show versions
-        shell: micromamba-shell {0}
-        run: |
-          pip show jupyterlite-core
-          pip show jupyterlite-terminal
-          pip show cockle
-          pip show terminal-external-command
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                path: ./dist
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main'
