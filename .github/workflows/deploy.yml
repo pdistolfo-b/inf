@@ -35,7 +35,7 @@ jobs:
         run: |
           cp README.md content
           micromamba create -n terminal-external-command jupyterlab jupyterlite-core python nodejs
-          activate terminal-external-command
+          micromamba activate terminal-external-command
           jupyter lite build --contents content --output-dir dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
