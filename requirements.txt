@@ -3,8 +3,6 @@ jupyterlite-core==0.8.0
 jupyterlab~=4.6.0
 notebook~=7.6.0
 
-micromamba>=0.0.0
-
 jupyterlite-xeus>=0.0.0
 
 # Python kernel (optional)
