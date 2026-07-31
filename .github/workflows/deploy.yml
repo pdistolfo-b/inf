@@ -3,10 +3,15 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - '*'
   pull_request:
     branches:
       - '*'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -14,17 +19,56 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Install the dependencies
+
+      - name: Install micromamba and build environment
+        uses: mamba-org/setup-micromamba@v3
+     #   with:
+     #     micromamba-version: '1.5.8-0'
+      #    environment-file: .github/build-environment.yml
+      #    cache-environment: true
+
+      # Step 1: Build your custom xeus-cpp WASM
+      - name: Build xeus-cpp WASM
+        shell: bash -l {0}
         run: |
-          python -m pip install -r requirements.txt
-      - name: Build the JupyterLite site
-        run: |
-          cp README.md content
-          jupyter lite build --contents content --output-dir dist
+          micromamba create -y -n blah \
+            -c conda-forge \
+            jupyterlite \
+            jupyterlite-xeus \
+            jupyterlite-terminal \
+            xeus-cpp \
+            specta
+
+          micromamba activate blah
+
+          micromamba list | grep jupyter
+
+          jupyter lite build \
+          --output-dir dist \
+          --apps tree \
+          --apps lab \
+          --apps repl \
+          --debug
+       #micromamba create -n blah
+        #micromamba activate blah
+        #micromamba install jupyterlite-xeus jupyter_server xeus-cpp jupyterlite-terminal specta
+        #ls
+        #jupyter lite build --output-dir dist --apps tree --apps lab --apps repl 
+      #--XeusAddon.environment_file=environment.yml
+      #
+
+    #  - name: Create cockle WASM environment
+     #   run: |
+      #    micromamba create -p ./cockle_wasm_env -y \
+       #     cockle_fs coreutils grep less sed git2cpp lua nano tree vim \
+        #    --platform=emscripten-wasm32 \
+         #   -c https://repo.prefix.dev/emscripten-forge-4x \
+          #  -c conda-forge
+
+  #    - name: Build the JupyterLite site
+  #      shell: bash -l {0}
+        #run: 
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -33,14 +77,9 @@ jobs:
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main'
-    permissions:
-      pages: write
-      id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
