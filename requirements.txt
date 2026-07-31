@@ -5,7 +5,7 @@ notebook~=7.6.0
 
 jupyterlite-xeus>=0.0.0
 jupyterlite-terminal>=0.0.0
-jupyter_server
+jupyter-server
 
 # Python kernel (optional)
 jupyterlite-pyodide-kernel==0.8.0
