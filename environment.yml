@@ -10,7 +10,7 @@ dependencies:
   - matplotlib
   - pillow
   - ipywidgets
-  - cockle
-  - terminal-external-command
   - pip:
       - ipycanvas
+      - cockle
+      - terminal-external-command
