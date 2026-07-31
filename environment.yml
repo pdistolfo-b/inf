@@ -12,3 +12,4 @@ dependencies:
   - ipywidgets
   - pip:
       - ipycanvas
+      - git+https://github.com/ianthomas23/terminal-external-command.git
