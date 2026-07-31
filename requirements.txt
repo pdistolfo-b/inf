@@ -6,9 +6,6 @@ notebook~=7.6.0
 
 jupyterlite-xeus>=0.0.0
 jupyterlite-ai
-tree
-nano
-vim
 
 # Python kernel (optional)
 jupyterlite-pyodide-kernel==0.8.0
