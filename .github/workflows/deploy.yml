@@ -33,6 +33,7 @@ jobs:
           shell: micromamba-shell {0}
       - name: Activate cockle
         run: micromamba activate cockle
+        shell: micromamba-shell {0}
       - name: Build the JupyterLite site
         run: |
           cp README.md content
