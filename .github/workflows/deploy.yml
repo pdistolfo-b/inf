@@ -34,7 +34,7 @@ jobs:
       - name: Build the JupyterLite site
         run: |
           cp README.md content
-          activate cockle 
+          micromamba create -n terminal-external-command jupyterlab jupyterlite-core python nodejs
           activate terminal-external-command
           jupyter lite build --contents content --output-dir dist
       - name: Upload artifact
