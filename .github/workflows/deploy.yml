@@ -31,6 +31,10 @@ jobs:
           cache-environment: true
           post-cleanup: 'all'
           shell: micromamba-shell {0}
+      - name: Install extension
+        shell: micromamba-shell {0}
+        run: |
+          pip install git+https://github.com/ianthomas23/terminal-external-command.git          
       - name: Build the JupyterLite site
         run: |
           cp README.md content
