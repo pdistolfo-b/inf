@@ -10,20 +10,7 @@ dependencies:
   - matplotlib
   - pillow
   - ipywidgets
+  - cockle
+  - terminal-external-command
   - pip:
       - ipycanvas
-
-name: cockle
-channels:
-  - conda-forge
-dependencies:
-  - micromamba
-  - nodejs =20
-
-name: terminal-external-command
-channels:
-  - conda-forge
-dependencies:
-  - micromamba
-  - jupyterlite-core
-  - nodejs =20
