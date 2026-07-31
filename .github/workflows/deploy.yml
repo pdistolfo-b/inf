@@ -26,7 +26,7 @@ jobs:
       - name: Install JupyterLite packages
         shell: micromamba-shell {0}
         run: |
-          pip install -r requirements.txt      
+          pip install -r requirements.txt
       - name: Build the JupyterLite site
         run: |
           cp README.md content
@@ -39,11 +39,17 @@ jobs:
           find dist -name "cockle-config.json"
           echo "=== terminal files ==="
           find dist -path "*@jupyterlite*"        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
+      - name: Show versions
+        shell: micromamba-shell {0}
+        run: |
+          pip show jupyterlite-core
+          pip show jupyterlite-terminal
+          pip show cockle
+          pip show terminal-external-command
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: ./dist
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main'
