@@ -32,6 +32,13 @@ jobs:
           cp README.md content
           jupyter lite build --contents content --output-dir dist
         shell: micromamba-shell {0}
+      - name: Check terminal artifacts
+        shell: micromamba-shell {0}
+        run: |
+          echo "=== cockle files ==="
+          find dist -name "cockle-config.json"
+          echo "=== terminal files ==="
+          find dist -path "*@jupyterlite*"        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
