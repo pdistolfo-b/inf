@@ -30,7 +30,6 @@ jobs:
             powershell
           cache-environment: true
           post-cleanup: 'all'
-          shell: micromamba-shell {0}
       - name: Build the JupyterLite site
         run: |
           cp README.md content
