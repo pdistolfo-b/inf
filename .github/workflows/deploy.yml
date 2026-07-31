@@ -32,10 +32,6 @@ jobs:
           cp README.md content
           jupyter lite build --contents content --output-dir dist
         shell: micromamba-shell {0}
-      - name: Search tree package
-        shell: micromamba-shell {0}
-        run: |
-            micromamba search --platform emscripten-wasm32 tree
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
