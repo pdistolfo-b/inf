@@ -34,6 +34,7 @@ jobs:
       - name: Build the JupyterLite site
         run: |
           cp README.md content
+          pip install git+https://github.com/ianthomas23/terminal-external-command.git
           jupyter lite build --contents content --output-dir dist
         shell: micromamba-shell {0}
       - name: Upload artifact
