@@ -9,3 +9,4 @@ dependencies:
   - jupyterlite-xeus >=4.3
   - jupyterlite-terminal
   - notebook >=7.5
+  - cockle
