@@ -4,22 +4,7 @@
     "lua": {},
     "nano": {},
     "tree": {},
-    "util-js": {
-      "modules": {
-        "js-tab": {},
-        "js-test": {},
-        "js-tui": {}
-      },
-      "local_directory": "../test/util-js/lib",
-      "wasm": false
-    },
-    "util-wasm": {
-      "modules": {
-        "wasm-test": {}
-      },
-      "local_directory": "../test/util-wasm/wasm"
-    },
-    "vim": {}
+     "vim": {}
   },
   "aliases": {
     "git": "git2cpp",
