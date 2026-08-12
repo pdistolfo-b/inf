@@ -8,45 +8,41 @@ on:
     branches:
       - '*'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup micromamba
-        uses: mamba-org/setup-micromamba@v3
+
+      - name: Install micromamba and build environment
+        uses: mamba-org/setup-micromamba@v1
         with:
-          environment-file: environment.yml
-          init-shell: >-
-            bash
-            powershell
+          micromamba-version: '1.5.8-0'
+          environment-file: .github/build-environment.yml
           cache-environment: true
-          post-cleanup: 'all'
-      - name: Install JupyterLite packages
-        shell: micromamba-shell {0}
-        run: |
-          pip install -r requirements.txt
+
       - name: Build the JupyterLite site
+        shell: bash -l {0}
         run: |
-          cp README.md content
           jupyter lite build --contents content --output-dir dist
-        shell: micromamba-shell {0}
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-            path: ./dist
+          path: ./dist
+
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main'
-    permissions:
-      pages: write
-      id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages

@@ -1,37 +1,32 @@
-# JupyterLite Demo
+# testrepo — JupyterLite with xeus-cpp and an in-browser terminal
 
-[![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jupyterlite.github.io/demo)
+A static, serverless [JupyterLite](https://jupyterlite.readthedocs.io/) deployment for GitHub Pages featuring:
 
-JupyterLite deployed as a static site to GitHub Pages, for demo purposes.
+- **xeus-cpp** — a C++ Jupyter kernel compiled to WebAssembly ([jupyterlite-xeus](https://jupyterlite-xeus.readthedocs.io/)), so C++ notebooks run entirely in the browser.
+- **In-browser terminal** — [jupyterlite-terminal](https://jupyterlite-terminal.readthedocs.io/) (powered by [cockle](https://github.com/jupyterlite/cockle)), providing a bash-like shell with `coreutils` (`ls`, `cat`, `cp`, `mv`, `rm`, `mkdir`, `touch`, `wc`, ...), `nano`, `vim`, `grep`, `sed`, `less`, `tree`, `lua`, and a `git` implementation (`git2cpp`).
 
-## ✨ Try it in your browser ✨
+No backend server is required — everything runs client-side via WebAssembly.
 
-➡️ **https://jupyterlite.github.io/demo**
+## Deploying
 
-![github-pages](https://user-images.githubusercontent.com/591645/120649478-18258400-c47d-11eb-80e5-185e52ff2702.gif)
+1. Push this repository to GitHub.
+2. In the repository **Settings → Pages**, set the source to **GitHub Actions**.
+3. In **Settings → Actions → General**, ensure workflow permissions are set to **Read and write permissions**.
+4. Push to `main` (or re-run the workflow). The site builds and deploys automatically via [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+5. Your site will be available at `https://<your-username>.github.io/<repo-name>/`.
 
-## Requirements
+## Customizing
 
-JupyterLite is being tested against modern web browsers:
+- **Kernel packages**: edit [environment.yml](environment.yml). It uses the `emscripten-forge` channel to install WebAssembly builds of packages (e.g. add `numpy`, other xeus kernels, etc.) alongside `xeus-cpp`.
+- **Build-time tooling** (the CI machine's own Python env, e.g. `jupyterlite-core`, `jupyterlite-xeus`, `jupyterlite-terminal` versions): edit [.github/build-environment.yml](.github/build-environment.yml).
+- **Notebooks / files shipped with the site**: add them under [content/](content/).
+- **Terminal toggle**: controlled by `terminalsAvailable` in [jupyter-lite.json](jupyter-lite.json).
 
-- Firefox 90+
-- Chromium 89+
+## Local build
 
-## Deploy your JupyterLite website on GitHub Pages
-
-Check out the guide on the JupyterLite documentation: https://jupyterlite.readthedocs.io/en/latest/quickstart/deploy.html
-
-## Further Information and Updates
-
-For more info, keep an eye on the JupyterLite documentation:
-
-- How-to Guides: https://jupyterlite.readthedocs.io/en/latest/howto/index.html
-- Reference: https://jupyterlite.readthedocs.io/en/latest/reference/index.html
-
-This template provides the Pyodide kernel (`jupyterlite-pyodide-kernel`), the JavaScript kernel (`jupyterlite-javascript-kernel`), and the p5 kernel (`jupyterlite-p5-kernel`), along with other
-optional utilities and extensions to make the JupyterLite experience more enjoyable. See the
-[`requirements.txt` file](requirements.txt) for a list of all the dependencies provided.
-
-For a template based on the Xeus kernel, see the [`jupyterlite/xeus-python-demo` repository](https://github.com/jupyterlite/xeus-python-demo)
-
-
+```bash
+micromamba create -f .github/build-environment.yml -n jupyterlite-site
+micromamba activate jupyterlite-site
+jupyter lite build --contents content --output-dir dist
+jupyter lite serve --output-dir dist
+```
