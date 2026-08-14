@@ -68,7 +68,7 @@ jobs:
           MY_VAR="${{ env.PREFIX }}"
           micromamba activate build-env
           jupyter lite build \
-            --XeusAddon.prefix="$MY_VAR" \
+            --XeusAddon.prefix=$MY_VAR \
             --XeusAddon.mounts="$MY_VAR/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
             --XeusAddon.mounts="$MY_VAR/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
             --XeusAddon.prefix=$(pwd)/cockle_wasm_env     
