@@ -13,6 +13,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  MY_PREFIX: a
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -57,10 +60,12 @@ jobs:
       - name: Build the JupyterLite site
         shell: bash -l {0}
         run: |
+          ${{env.MY_PREFIX}} = ${{env.PREFIX}}
+          micromamba activate build-env
           jupyter lite build \
-            --XeusAddon.prefix=${{ env.PREFIX }} \
-            --XeusAddon.mounts="${{ env.PREFIX }}/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
-            --XeusAddon.mounts="${{ env.PREFIX }}/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
+            --XeusAddon.prefix=${{ env.MY_PREFIX }} \
+            --XeusAddon.mounts="${{ env.MY_PREFIX }}/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
+            --XeusAddon.mounts="${{ env.MY_PREFIX }}/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
             --contents content --output-dir dist --apps tree --apps lab
 
       - name: Upload artifact
