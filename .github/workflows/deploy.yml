@@ -29,6 +29,7 @@ jobs:
 
       # Step 1: Build your custom xeus-cpp WASM
       - name: Build xeus-cpp WASM
+        shell: bash -l {0}
         run: |
           git clone --depth=1 https://github.com/compiler-research/xeus-cpp.git
           cd xeus-cpp
