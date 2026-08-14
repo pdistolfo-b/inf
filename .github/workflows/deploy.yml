@@ -53,6 +53,7 @@ jobs:
 
           # emmake make check-xeus-cpp
           emmake make install      
+          export $GITHUB_ENV=${{env.PREFIX}}
 
       - name: Create cockle WASM environment
         run: |
@@ -65,7 +66,7 @@ jobs:
       - name: Build the JupyterLite site
         shell: bash -l {0}
         run: |
-          MY_VAR="${{ env.PREFIX }}"
+          MY_VAR=$GITHUB_ENV
           micromamba activate build-env
           jupyter lite build \
             --XeusAddon.prefix=$MY_VAR \
