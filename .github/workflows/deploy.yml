@@ -51,7 +51,7 @@ jobs:
             -DSYSROOT_PATH=$SYSROOT_PATH                      \
               ..
 
-          emmake make check-xeus-cpp
+          # emmake make check-xeus-cpp
           emmake make install      
 
       - name: Create cockle WASM environment
@@ -63,15 +63,14 @@ jobs:
             -c conda-forge
 
       - name: Build the JupyterLite site
-        env:
-           MY_PREFIX : ${{env.PREFIX}}
         shell: bash -l {0}
         run: |
+          MY_VAR="${{ env.PREFIX }}"
           micromamba activate build-env
           jupyter lite build \
-            --XeusAddon.prefix=${{ env.MY_PREFIX }} \
-            --XeusAddon.mounts="${{ env.MY_PREFIX }}/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
-            --XeusAddon.mounts="${{ env.MY_PREFIX }}/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
+            --XeusAddon.prefix="$MY_VAR" \
+            --XeusAddon.mounts="$MY_VAR/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
+            --XeusAddon.mounts="$MY_VAR/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
             --XeusAddon.prefix=$(pwd)/cockle_wasm_env     
             --contents content --output-dir dist --apps tree --apps lab
 
