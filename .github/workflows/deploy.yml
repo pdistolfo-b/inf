@@ -53,7 +53,7 @@ jobs:
 
           # emmake make check-xeus-cpp
           emmake make install      
-          export $GITHUB_ENV=${{env.PREFIX}}
+          export GITHUB_ENV=${{env.PREFIX}}
 
       - name: Create cockle WASM environment
         run: |
