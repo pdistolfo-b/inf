@@ -13,9 +13,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  MY_PREFIX: a
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -58,9 +55,10 @@ jobs:
           emmake make install      
 
       - name: Build the JupyterLite site
+        env:
+           MY_PREFIX : ${{env.PREFIX}}
         shell: bash -l {0}
         run: |
-          ${{env.MY_PREFIX}} = ${{env.PREFIX}}
           micromamba activate build-env
           jupyter lite build \
             --XeusAddon.prefix=${{ env.MY_PREFIX }} \
