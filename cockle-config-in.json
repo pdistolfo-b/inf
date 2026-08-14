@@ -1,4 +1,5 @@
 {
+    "prefix": "./cockle_wasm_env",
   "packages": {
     "git2cpp": {},
     "lua": {},
