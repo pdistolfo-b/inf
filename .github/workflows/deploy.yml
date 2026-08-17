@@ -53,7 +53,16 @@ jobs:
 
           # emmake make check-xeus-cpp
           emmake make install      
-          export GITHUB_ENV=${{env.PREFIX}}
+
+          export MY_VAR=$GITHUB_ENV
+          micromamba activate build-env
+          echo $MY_VAR
+          jupyter lite build \
+            --XeusAddon.prefix=$MY_VAR \
+            --XeusAddon.mounts="$MY_VAR/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
+            --XeusAddon.mounts="$MY_VAR/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
+            --XeusAddon.prefix=$(pwd)/cockle_wasm_env     
+            --contents content --output-dir dist --apps tree --apps lab
 
     #  - name: Create cockle WASM environment
      #   run: |
@@ -63,17 +72,9 @@ jobs:
          #   -c https://repo.prefix.dev/emscripten-forge-4x \
           #  -c conda-forge
 
-      - name: Build the JupyterLite site
-        shell: bash -l {0}
-        run: |
-          export MY_VAR=$GITHUB_ENV
-          micromamba activate build-env
-          jupyter lite build \
-            --XeusAddon.prefix=$MY_VAR \
-            --XeusAddon.mounts="$MY_VAR/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
-            --XeusAddon.mounts="$MY_VAR/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
-            --XeusAddon.prefix=$(pwd)/cockle_wasm_env     
-            --contents content --output-dir dist --apps tree --apps lab
+  #    - name: Build the JupyterLite site
+  #      shell: bash -l {0}
+        #run: 
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
