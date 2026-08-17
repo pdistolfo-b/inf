@@ -87,7 +87,7 @@ jobs:
       - name: Build the JupyterLite site
         shell: bash -l {0}
         run: |
-          MY_VAR=$GITHUB_ENV
+          export MY_VAR=$GITHUB_ENV
           micromamba activate build-env
           jupyter lite build \
             --XeusAddon.prefix=$MY_VAR \
