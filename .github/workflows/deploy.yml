@@ -61,7 +61,7 @@ jobs:
             --XeusAddon.prefix=$MY_VAR \
             --XeusAddon.mounts="$MY_VAR/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
             --XeusAddon.mounts="$MY_VAR/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
-            --XeusAddon.prefix=$(pwd)/cockle_wasm_env     
+            --XeusAddon.prefix=$(pwd)/cockle_wasm_env     \
             --contents content --output-dir dist --apps tree --apps lab
 
     #  - name: Create cockle WASM environment
