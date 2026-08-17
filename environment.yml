@@ -1,6 +1,18 @@
-name: xeus-kernel
+name: xeus-cling
 channels:
-  - https://repo.prefix.dev/emscripten-forge-4x
-  - https://repo.prefix.dev/conda-forge
+  - conda-forge
 dependencies:
-  - xeus-cpp
+  # Build dependencies
+  - cmake
+  # Host dependencies
+  - xeus-zmq=1.1.0
+  - cling=0.9
+  - nlohmann_json=3.11.2
+  - cppzmq
+  - xtl=0.7
+  - pugixml
+  - cpp-argparse
+  # Test dependencies
+  - pytest
+  - jupyter_kernel_test
+  - doctest >= 2.4.6
