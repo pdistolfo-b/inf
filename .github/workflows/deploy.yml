@@ -26,14 +26,6 @@ jobs:
           micromamba-version: '1.5.8-0'
           environment-file: .github/build-environment.yml
           cache-environment: true
-          
-   #   - name: Create cockle WASM environment
-    #    run: |
-     #    micromamba create -p ./cockle_wasm_env -y \
-         #   cockle_fs coreutils grep less sed git2cpp lua nano tree vim \
-      #      --platform=emscripten-wasm32 \
-       #     -c https://repo.prefix.dev/emscripten-forge-4x \
-        #    -c conda-forge
 
       - name: Build the JupyterLite site
         shell: bash -l {0}
