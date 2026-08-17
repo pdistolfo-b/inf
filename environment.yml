@@ -1,3 +1,5 @@
 name: xeus-cling
 channels:
   - conda-forge
+dependencies:
+  - xeus-cpp
