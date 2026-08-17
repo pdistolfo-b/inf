@@ -3,9 +3,3 @@ channels:
   - conda-forge
 dependencies:
   # Build dependencies
-  - cmake
-  # Host dependencies
-  # Test dependencies
-  - pytest
-  - jupyter_kernel_test
-  - doctest >= 2.4.6
