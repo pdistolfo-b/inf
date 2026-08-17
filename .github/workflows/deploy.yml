@@ -38,8 +38,7 @@ jobs:
       - name: Build the JupyterLite site
         shell: bash -l {0}
         run: |
-          micromamba create -n cling
-          micromamba activate cling
+          micromamba activate build-env
           jupyter lite build  --contents content --output-dir dist --apps tree --apps lab
 
       - name: Upload artifact
