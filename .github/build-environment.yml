@@ -16,3 +16,4 @@ dependencies:
   - xtl=0.7
   - pugixml
   - cpp-argparse
+  - xeus-cling
