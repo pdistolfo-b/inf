@@ -31,37 +31,10 @@ jobs:
       - name: Build xeus-cpp WASM
         shell: bash -l {0}
         run: |
-          git clone --depth=1 https://github.com/compiler-research/xeus-cpp.git
-          cd xeus-cpp
-          micromamba create -f environment-wasm-build.yml -y
-          micromamba activate xeus-cpp-wasm-build
-          micromamba create -f environment-wasm-host.yml \
-            --platform=emscripten-wasm32 \
-            -c https://prefix.dev/emscripten-forge-4x \
-            -c https://prefix.dev/conda-forge
-          mkdir build && cd build
-          export BUILD_PREFIX=$MAMBA_ROOT_PREFIX/envs/xeus-cpp-wasm-build
-          export PREFIX=$MAMBA_ROOT_PREFIX/envs/xeus-cpp-wasm-host
-          export SYSROOT_PATH=$BUILD_PREFIX/opt/emsdk/upstream/emscripten/cache/sysroot
-
-          emcmake cmake \
-            -DCMAKE_BUILD_TYPE=Release                        \
-            -DCMAKE_INSTALL_PREFIX=$PREFIX                    \
-            -DCMAKE_FIND_ROOT_PATH=$PREFIX                    \
-            -DSYSROOT_PATH=$SYSROOT_PATH                      \
-              ..
-
-          # emmake make check-xeus-cpp
-          emmake make install      
-
-          export MY_VAR=$GITHUB_ENV
-          micromamba activate build-env
-          echo $MY_VAR
+          micromamba create -n meins
+          micromamba activate meins
+          micromamba install jupyterlab_server xeus-cpp -c conda-forge
           jupyter lite build \
-            --XeusAddon.prefix=$MY_VAR \
-            --XeusAddon.mounts="$MY_VAR/share/xeus-cpp/tagfiles:/share/xeus-cpp/tagfiles" \
-            --XeusAddon.mounts="$MY_VAR/etc/xeus-cpp/tags.d:/etc/xeus-cpp/tags.d" \
-            --XeusAddon.prefix=$(pwd)/cockle_wasm_env     \
             --output-dir dist --apps tree --apps lab
 
     #  - name: Create cockle WASM environment
