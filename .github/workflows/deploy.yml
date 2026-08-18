@@ -21,11 +21,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install micromamba and build environment
-        uses: mamba-org/setup-micromamba@v1
-        with:
-          micromamba-version: '1.5.8-0'
-          environment-file: .github/build-environment.yml
-          cache-environment: true
+        uses: mamba-org/setup-micromamba@v3
+     #   with:
+     #     micromamba-version: '1.5.8-0'
+      #    environment-file: .github/build-environment.yml
+      #    cache-environment: true
 
       # Step 1: Build your custom xeus-cpp WASM
       - name: Build xeus-cpp WASM
