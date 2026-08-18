@@ -35,9 +35,9 @@ jobs:
           micromamba activate blah
           micromamba install jupyterlite-xeus jupyter_server xeus-cpp jupyterlite-terminal
           ls
-          jupyter lite build --output-dir dist 
+          jupyter lite build --output-dir dist   --apps tree lab repl
       #--XeusAddon.environment_file=environment.yml
-      # --apps tree lab repl
+      #
 
     #  - name: Create cockle WASM environment
      #   run: |
