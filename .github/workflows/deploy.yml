@@ -33,7 +33,7 @@ jobs:
         run: |
           micromamba create -n blah
           micromamba activate blah
-          micromamba install jupyter_server jupyterlite-xeus jupyterlite-terminal specta xeus-cpp
+          micromamba install jupyter_server jupyterlite-xeus specta xeus-cpp
           jupyter lite build --XeusAddon.prefix=${{ env.PREFIX }} \
             --lite-dir=content \
             --output-dir dist --apps tree lab repl
