@@ -35,9 +35,8 @@ jobs:
           micromamba activate blah
           micromamba install jupyterlite-xeus jupyter_server specta xeus-cpp
           ls
-          jupyter lite build --XeusAddon.environment_file=environment.yml \
-            --lite-dir=content \
-            --output-dir dist 
+          jupyter lite build --output-dir dist 
+      #--XeusAddon.environment_file=environment.yml
       # --apps tree lab repl
 
     #  - name: Create cockle WASM environment
