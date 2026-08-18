@@ -21,12 +21,8 @@
           "label": "Specta"
         }
       ],
-      "defaultLayout": "article",
+      "defaultLayout": "slides",
       "perFileConfig": {
-        "blog.ipynb": {
-          "hideTopbar": false,
-          "defaultLayout": "article"
-        },
         "slides.ipynb": {
           "hideTopbar": true,
           "slidesTheme": "sky"
@@ -37,7 +33,7 @@
         "hideLeftPanel": true,
         "hideRightPanel": true,
         "hideStatusbar": true,
-        "hideHeader": false
+        "hideHeader": true
       }
     },
 }
