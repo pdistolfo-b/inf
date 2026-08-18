@@ -33,7 +33,7 @@ jobs:
         run: |
           micromamba create -n meins
           micromamba activate meins
-          micromamba install jupyterlab_server jupyterlite jupyter-xeus jupyterlite-terminal \
+          micromamba install jupyterlab_server jupyterlite jupyterlite-xeus jupyterlite-terminal \
             xeus-cpp specta \
             -c conda-forge
           jupyter lite build \
