@@ -37,7 +37,8 @@ jobs:
           ls
           jupyter lite build \
             --lite-dir=content \
-            --output-dir dist --apps tree lab repl
+            --output-dir dist 
+      # --apps tree lab repl
 
     #  - name: Create cockle WASM environment
      #   run: |
