@@ -3,37 +3,4 @@
   "jupyter-config-data": {
     "terminalsAvailable": true
   },
-   "spectaConfig": {
-      "topBar": {
-        "title": "Specta Tree"
-      },
-      "uiSwitcherOptions": [
-        {
-          "id": "lab",
-          "label": "JupyterLab"
-        },
-        {
-          "id": "notebooks",
-          "label": "Notebook"
-        },
-        {
-          "id": "specta",
-          "label": "Specta"
-        }
-      ],
-      "defaultLayout": "slides",
-      "perFileConfig": {
-        "slides.ipynb": {
-          "hideTopbar": true,
-          "slidesTheme": "sky"
-        }
-      },
-      "labConfig": {
-        "setSingleMode": true,
-        "hideLeftPanel": true,
-        "hideRightPanel": true,
-        "hideStatusbar": true,
-        "hideHeader": true
-      }
-    },
 }
