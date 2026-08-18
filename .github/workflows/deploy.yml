@@ -33,9 +33,12 @@ jobs:
         run: |
           micromamba create -n meins
           micromamba activate meins
-          micromamba install jupyterlab_server jupyterlite xeus-cpp -c conda-forge
+          micromamba install jupyterlab_server jupyterlite jupyter-xeus jupyterlite-terminal \
+            xeus-cpp specta \
+            -c conda-forge
           jupyter lite build \
-            --output-dir dist --apps tree --apps lab
+            --lite-dir=content \
+            --output-dir dist --apps tree lab repl
 
     #  - name: Create cockle WASM environment
      #   run: |
