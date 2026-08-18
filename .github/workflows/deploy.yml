@@ -31,6 +31,9 @@ jobs:
       - name: Build xeus-cpp WASM
         shell: bash -l {0}
         run: |
+          micromamba create -n blah
+          micromamba activate blah
+          micromamba install jupyter_server jupyterlite-xeus jupyterlite-terminal specta xeus-cpp
           jupyter lite build \
             --lite-dir=content \
             --output-dir dist --apps tree lab repl
