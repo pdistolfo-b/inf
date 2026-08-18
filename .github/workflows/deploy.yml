@@ -33,7 +33,7 @@ jobs:
         run: |
           micromamba create -n meins
           micromamba activate meins
-          micromamba install jupyterlab_server xeus-cpp -c conda-forge
+          micromamba install jupyterlab_server jupyter-lite xeus-cpp -c conda-forge
           jupyter lite build \
             --output-dir dist --apps tree --apps lab
 
