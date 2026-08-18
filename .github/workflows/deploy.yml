@@ -35,7 +35,7 @@ jobs:
           micromamba activate blah
           micromamba install jupyterlite-xeus jupyter_server specta xeus-cpp
           ls
-          jupyter lite build \
+          jupyter lite build --XeusAddon.environment_file=environment.yml \
             --lite-dir=content \
             --output-dir dist 
       # --apps tree lab repl
