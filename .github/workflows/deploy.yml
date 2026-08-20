@@ -36,7 +36,8 @@ jobs:
             jupyterlite \
             jupyterlite-xeus \
             jupyterlite-terminal \
-            xeus-cpp
+            xeus-cpp \
+            specta
 
           micromamba activate blah
 
