@@ -31,11 +31,17 @@ jobs:
       - name: Build xeus-cpp WASM
         shell: bash -l {0}
         run: |
-          micromamba create -n blah
-          micromamba activate blah
-          micromamba install jupyterlite-xeus jupyter_server xeus-cpp jupyterlite-terminal specta
-          ls
-          jupyter lite build --output-dir dist --apps tree --apps lab --apps repl 
+          micromamba create -y -n blah \
+            -c conda-forge \
+            jupyterlite \
+            jupyterlite-xeus \
+            jupyterlite-terminal \
+            xeus-cpp
+        #micromamba create -n blah
+        #micromamba activate blah
+        #micromamba install jupyterlite-xeus jupyter_server xeus-cpp jupyterlite-terminal specta
+        #ls
+        #jupyter lite build --output-dir dist --apps tree --apps lab --apps repl 
       #--XeusAddon.environment_file=environment.yml
       #
 
