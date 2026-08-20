@@ -37,7 +37,18 @@ jobs:
             jupyterlite-xeus \
             jupyterlite-terminal \
             xeus-cpp
-        #micromamba create -n blah
+
+          micromamba activate blah
+
+          micromamba list | grep jupyter
+
+          jupyter lite build \
+          --output-dir dist \
+          --apps tree \
+          --apps lab \
+          --apps repl \
+          --debug
+       #micromamba create -n blah
         #micromamba activate blah
         #micromamba install jupyterlite-xeus jupyter_server xeus-cpp jupyterlite-terminal specta
         #ls
